@@ -1,5 +1,7 @@
 from config.url_base import url_base
 
+url_base = url_base()
+
 def urls():
     
     # URL que quieres abrir

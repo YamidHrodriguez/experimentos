@@ -1,32 +1,15 @@
 import requests
 from bs4 import BeautifulSoup
 import webbrowser
+from config.url_base import url_base
+from data.urls import urls
 
-url_base = "https://egakat.colombiasoftware.net/index.php?"
-
+url_base = url_base()
 # URLs que quieres abrir
-urls =  {
-    "home": f"{url_base}#no-back-button",
-    "ship": {
-        "shipment": {
-            "form": f"{url_base}page=Despacho.Remesa_003.Home_010#no-back-button",
-            "search": f"{url_base}page=Despacho.Remesa_003.Home_010&remesa_codigo=",
-        },
-        "manifiest": f"{url_base}page=Despacho.Manifiesto_003.Home_010&"
-    },
-    "basics": {
-        "users": {
-            "create": f"{url_base}page=Basicos.Usuario.Home#no-back-button"
-        }
-    },
-    "masters": {
-        "sender": {
-            "change": f"{url_base}page=Maestros.Remitente.CambioInformacion#no-back-button"
-        }
-    }
-}
+urls = urls()
 
-def open_shipment(type, urls, code):
+
+def open_shipment(type, code):
     url = urls["ship"]["shipment"]["search"]
     i = int(input("¿Cuántas remesas consecutivas quieres abrir?: "))
     for j in range(i):
@@ -41,9 +24,10 @@ def error(type):
     if type == 1:
         print("Error, digita una opción que se encuentre en el menú")
 
+
 def init():
     question = input("Bienvenid@, ¿Iniciaste sesión ya?\nA)SÍ\nB)NO\nOpcion: ").lower()
-
+    print(urls["basics"]["users"]["create"])
     if question == "b":
         webbrowser.open(url_base)
     elif question == "a":
@@ -64,7 +48,9 @@ Elije por favor una opcion:
         if choose():
             break
 
+
 def choose():
+
     option = input("Opcion: ").lower()
 
     if option == "a":
@@ -72,6 +58,7 @@ def choose():
 ***************************************************************************
                         CREACION DE USUARIO
 Abriendo formulario para creación de usuarios ....""")
+     
         webbrowser.open(urls["basics"]["users"]["create"])
     elif option == "b":
         code_init = int(input("""
@@ -79,7 +66,7 @@ Abriendo formulario para creación de usuarios ....""")
                     MODIFICAR ORIGEN DE REMESAS
 
 Digite el primer número de la lista de remesas a modificar: """))
-        open_shipment("b", urls, code_init)
+        open_shipment("b", code_init)
     elif option == "c":
         print("""
 ***************************************************************************
@@ -89,7 +76,7 @@ Digite el primer número de la lista de remesas a modificar: """))
         manifiest = int(input("Digita el número del manifiesto: "))
         webbrowser.open(f"{urls['ship']['manifiest']}manifiesto_codigo=0{manifiest}#no-back-button")
         code_init = int(input("""Digite el primer número de la lista de remesas a modificar destinatario: """))
-        open_shipment("c", urls, code_init)
+        open_shipment("c", code_init)
     elif option == "d":
         webbrowser.open(urls["home"])  # Ajusta esta parte según lo que desees hacer en la opción D
     elif option == "e":
@@ -98,5 +85,6 @@ Digite el primer número de la lista de remesas a modificar: """))
     else:
         print("Opción no válida. Inténtalo de nuevo.")
         return False
+
 
 init()
