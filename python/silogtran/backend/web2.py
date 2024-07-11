@@ -8,7 +8,6 @@ url_base = url_base()
 urls = urls()
 
 
-
 def init():
     question = input("""
 ===============================================================================================================================
@@ -77,6 +76,11 @@ Digite el primer número de la lista de remesas a modificar: """))
         print("Opción no válida. Inténtalo de nuevo.")
         return False
 
+
+def search_manifiest(manifiest,id):
+    webbrowser.open(f"{urls['ship']['manifiest']['form']}manifiesto_codigo=0{manifiest}#{id}")
+
+
 def open_shipment(manifiest,type,code):
     url = urls["ship"]["shipment"]["search"]
     i = int(input("¿Cuántas remesas consecutivas quieres abrir?: "))
@@ -86,11 +90,14 @@ def open_shipment(manifiest,type,code):
         url = urls["masters"]["sender"]["change"]
         webbrowser.open(url)
         input()
-        webbrowser.open(f"{urls['ship']['manifiest']['DeleteCacheMin']}manifiesto_codigo=0{manifiest}#no-back-button")
+        search_manifiest(manifiest,"no-back-button")
         input()
-        webbrowser.open(f"{urls['ship']['manifiest']['form']}manifiesto_codigo=0{manifiest}#ctl0_MainModule_EnviarMinisterio")
+        webbrowser.open(f"{urls['ship']['manifiest']['DeleteCacheMin']}manifiesto_codigo=0{manifiest}#{id}")
+        input()
+        search_manifiest(manifiest,"ctl0_MainModule_EnviarMinisterio")
     else:
         pass
+
 
 def error(type):
     if type == 1:
