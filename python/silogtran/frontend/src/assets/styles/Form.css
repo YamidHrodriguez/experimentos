@@ -1,0 +1,26 @@
+h2{
+    padding-bottom: 2%;
+}
+
+#form-login{
+    padding: 5%;
+}
+
+#input-question{
+    margin-bottom: 5%;
+}
+#btns-login{
+    display: grid;
+    width: 100%;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto auto;
+    align-items: center;
+    justify-content: center;
+}
+
+#btns-login input{
+    background: red;
+    color: white;
+    height: 30px;
+    cursor: pointer;
+}
