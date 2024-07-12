@@ -73,7 +73,7 @@ Digite el primer número de la lista de remesas a modificar: """))
         print("Saliendo del programa.")
         return 
     else:
-        print("Opción no válida. Inténtalo de nuevo.")
+        error(2)
         return False
 
 
