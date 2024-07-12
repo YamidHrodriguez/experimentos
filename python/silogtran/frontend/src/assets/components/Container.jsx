@@ -1,13 +1,17 @@
 import React from "react"
 import '../styles/Container.css'
+import Header from './Header'
+import Form from './Form'
+import Content from './Content'
 
-const container = (props) =>{
+const container = () =>{
     return(
         <>
             <div id="container" className="container">
-                <div id="content" className="content">
-                    {props.children}
-                </div>
+                <Content>
+                    <Header></Header>        
+                    <Form></Form>
+                </Content>
             </div>
         </>
     )
