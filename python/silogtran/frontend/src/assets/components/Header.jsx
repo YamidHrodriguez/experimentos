@@ -10,7 +10,6 @@ const header = ()=>{
                     </div>
                     <h1>ProcessPulse</h1>
                 </div>
-                <div><h2>¡Bienvenid@!</h2></div>
             </header>
         </>
     )

@@ -3,9 +3,9 @@ from flask_cors import CORS
 import requests
 from bs4 import BeautifulSoup
 import webbrowser
-from config.url_base import url_base
+from data.urls import urls
 
-url_base = url_base()
+urls = urls()
 
 app = Flask(__name__)
 CORS(app)
@@ -16,7 +16,14 @@ def home():
 
 @app.route('/login')
 def redirect_to_login():
-    return redirect('https://egakat.colombiasoftware.net/index.php?#no-back-button', code=302)
+    url= f'{urls["home"]}'
+    return redirect(url, code=302)
+
+@app.route('/user')
+def redirect_to_user():
+    url= f'{urls["basics"]["users"]["create"]}'
+    print(url)
+    return redirect(url, code=302)
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(host='0.0.0.0', port=5000, debug=True)

@@ -1,7 +1,8 @@
 import React from "react";
 import '../styles/Form.css';
 
-const Form = (props) => {
+const FormLogin = (props) => {
+
   const handleRedirect = () => {
     window.open('http://127.0.0.1:5000/login', '_blank');
   };
@@ -14,7 +15,7 @@ const Form = (props) => {
             <h2>¿Ya iniciaste sesión en SILOGTRAN?</h2>
           </label>
           <div id="btns-login">
-            <input type="button" value="SI" />
+            <input type="button" value="SI"/>
             <input 
               style={{ width: '100%' }} 
               type="button" 
@@ -28,4 +29,4 @@ const Form = (props) => {
   );
 };
 
-export default Form;
+export default FormLogin;
