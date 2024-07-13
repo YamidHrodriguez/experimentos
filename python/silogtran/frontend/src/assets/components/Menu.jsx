@@ -11,7 +11,7 @@ const Menu = ({ showFormLogin }) => {
     setShipmentVisible(true);
   };
 
-  const showMenu = () => {
+  const showMenu2 = () => {
     setMenuVisible(true);
     setShipmentVisible(false);
   };
@@ -72,7 +72,7 @@ const Menu = ({ showFormLogin }) => {
         </div>
       )}
       
-      {isShipmentVisible && <Shipment showMenu={showMenu} />}
+      {isShipmentVisible && <Shipment showMenu2={showMenu2} />}
     </>
   );
 };

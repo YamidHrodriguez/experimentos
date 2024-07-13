@@ -23,12 +23,12 @@ def redirect_to_user():
     return redirect(url, code=302)
 
 @cross_origin
-@app.route('/shipment', methods=['GET'])
-def redirect_shipment():
-    code = request.args.get('code-shipment')
-    quantity = request.args.get('num-shipments')
+@app.route('/shipment/<cod>', methods=['GET'])
+def redirect_shipment(cod):
+    url_base = urls["ship"]["shipment"]["search"]
+    url = f'{url_base}{cod}'
+    return redirect(url, code=302)
     
-    return f'Nombre: {code}, Apellido: {quantity}'
 
 
 if __name__ == '__main__':
