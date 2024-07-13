@@ -30,6 +30,7 @@ h2{
 #btns-login input{
     background: red;
     color: white;
-    height: 30px;
+    height: 40px;
     cursor: pointer;
+    font-size: .9rem;
 }

@@ -1,32 +1,33 @@
-import React from "react";
-import '../styles/Form.css';
+import React, { useState } from 'react';
+import '../styles/Container.css';
+import axios from 'axios';
 
-const FormLogin = (props) => {
-
-  const handleRedirect = () => {
-    window.open('http://127.0.0.1:5000/login', '_blank');
-  };
+const Shipment = ({ showMenu2 }) => {
 
   return (
-    <>
-      <form id="form-login" name="form-login" className="forms">
-        <div id="input-question" className="inputs">
-          <label>
-            <h2>¿Ya iniciaste sesión en SILOGTRAN?</h2>
-          </label>
-          <div id="btns-login">
-            <input type="button" value="SI"/>
-            <input 
-              style={{ width: '100%' }} 
-              type="button" 
-              value="NO" 
-              onClick={handleRedirect} 
-            />
-          </div>
+    <div id="shipment" className='shipment visible'>
+      <h2>Cambiar origen de remesas</h2>
+      <form action='http://127.0.0.1:5000/shipment' method='get' id='shipment-content' className='shipment-content'>
+        <div>
+          <label htmlFor="code-shipment">Código de remesa: </label>
+          <input 
+            id="code-shipment" 
+            name="code-shipment" 
+            type="number" 
+          />
         </div>
+        <div>
+          <label htmlFor="num-shipments">Cantidad de remesas a validar</label>
+          <input 
+            id="num-shipments" 
+            name="num-shipments" 
+            type="number" 
+          />
+        </div>
+        <input type="submit" value="OK" />  
       </form>
-    </>
+    </div>
   );
-};
+}
 
-export default FormLogin;
+export default Shipment;

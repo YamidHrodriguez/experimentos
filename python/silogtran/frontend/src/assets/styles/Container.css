@@ -94,16 +94,55 @@ h1{
     padding: 2%;
     margin: 2%;
 }
+
+#a,#b,#c,#d,#e{
+    width: 80%;
+    background: blue;
+    color: white;
+
+}
 #menu .menu-content input{
     height: 50px;
     margin: 1%;
     border-radius: 10px;
     font-size: 1rem;
     cursor: pointer;
+    text-align: left;
+    padding: 2%;
 }
-#a,#b,#c,#d,#e{
-    width: 80%;
-    background: blue;
-    color: white;
-
+#shipment{
+  display: flex;
+  width: 100%;
+  height: auto;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.5s ease, transform 0.5s ease;
+  padding: 2%;
+}
+#shipment .shipment-content{
+  display: grid;
+  grid-template-columns: 40% 40% 20%;
+  align-items: center;
+  justify-content: center;
+  margin: 0% 2% 2% 2%;
+  text-align: center;
+}
+#shipment h2{
+  font-size: 1.7rem;
+  color: var(--color-terciario);
+}
+#shipment input{
+  height: 50px;
+  margin: 1%;
+  border-radius: 10px;
+  font-size: 1rem;
+  cursor: pointer;
+  text-align: center;
+  padding: 2%;
+  margin-bottom: 5%;
+}
+#shipment input[type="submit"]{
+  background-color: var(--color-terciario);
+  color: var(--color-secundario)
 }
