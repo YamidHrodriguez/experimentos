@@ -16,7 +16,7 @@ const Shipment = ({ showMenu2 }) => {
 
   return (
     <div id="shipment" className='shipment visible'>
-      <h2>Cambiar origen de remesas</h2>
+      <h2>Remesas</h2>
       <form onSubmit={handleRedirect} id='shipment-content' className='shipment-content'>
         <input type='button' value="Atrás" onClick={showMenu2} />
         <div>
