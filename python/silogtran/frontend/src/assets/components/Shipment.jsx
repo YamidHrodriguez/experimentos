@@ -1,24 +1,50 @@
 import React, { useState } from 'react';
 import '../styles/Container.css';
+import BackButton from './BackButton';
 import axios from 'axios';
 
-const Shipment = ({ showMenu2 }) => {
+const Shipment = ({ showMenu2, value }) => {
   const [codeShipment, setCodeShipment] = useState('');
   const [numShipments, setNumShipments] = useState('');
 
   const handleRedirect = (e) => {
     e.preventDefault(); // Detener el envío automático del formulario
-    for (let i = 0; i <= (numShipments-1); i++) {
-      window.open(`http://127.0.0.1:5000/shipment/0${parseInt(codeShipment) + i}`, '_blank');
+    console.log(value)
+    if (value) {
+      window.open('http://127.0.0.1:5000/change_sender_respondent', '_blank');
+      for (let i = 0; i <= (numShipments - 1); i++) {
+        window.open(`http://127.0.0.1:5000/shipment/0${parseInt(codeShipment) + i}`, '_blank');
+  
+        if (i === numShipments - 1) {
+          // Función para preguntar si desea borrar la cache
+          const preguntarCache = () => {
+            let borrar_Cache = prompt("¿Deseas borrar cache ahora (SI/NO)?").toUpperCase();
+            
+            if (borrar_Cache === "SI") {
+              window.open('http://127.0.0.1:5000/manifiest/delete_cache_min', '_blank');
+              clearInterval(intervalo); // Detener el intervalo cuando la respuesta es "SI"
+            }
+          };
+  
+          // Intervalo para preguntar cada cierto tiempo (por ejemplo, cada 5 segundos)
+          let intervalo = setInterval(preguntarCache, 15000);
+  
+          // Llamar a la función una vez inicialmente
+          preguntarCache();
+        }
+      }
+    } else {
+      for (let i = 0; i <= (numShipments - 1); i++) {
+        window.open(`http://127.0.0.1:5000/shipment/0${parseInt(codeShipment) + i}`, '_blank');
+      }
     }
-    // Puedes agregar más lógica aquí si es necesario
   };
-
+  console.log("Valorrrr : ",value)
   return (
     <div id="shipment" className='shipment visible'>
       <h2>Remesas</h2>
       <form onSubmit={handleRedirect} id='shipment-content' className='shipment-content'>
-        <input type='button' value="Atrás" onClick={showMenu2} />
+        <BackButton showMenu2={showMenu2}/>
         <div>
           <label htmlFor="code-shipment">Código de remesa: </label>
           <input 
@@ -30,7 +56,7 @@ const Shipment = ({ showMenu2 }) => {
           />
         </div>
         <div>
-          <label htmlFor="num-shipments">Cantidad de remesas a validar</label>
+          <label htmlFor="num-shipments">Cantidad de remesas: </label>
           <input 
             id="num-shipments" 
             name="num-shipments" 

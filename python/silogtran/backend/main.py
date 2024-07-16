@@ -64,7 +64,7 @@ Digite el primer número de la lista de remesas a modificar: """))
         
         """)
         manifiest = int(input("Digita el número del manifiesto: "))
-        webbrowser.open(f"{urls['ship']['manifiest']['form']}manifiesto_codigo=0{manifiest}#ctl0_MainModule_Remesa")
+        webbrowser.open(f"{urls['ship']['manifiest']['search']}0{manifiest}#ctl0_MainModule_Remesa")
         code_init = int(input("""Digite el primer número de la lista de remesas a modificar destinatario: """))
         open_shipment(urls,manifiest,"c", code_init)
     elif option == "d":

@@ -14,6 +14,7 @@ def urls():
             },
             "manifiest": {
                 "form": f"{url_base}page=Despacho.Manifiesto_003.Home_010&",
+                "search": f"{url_base}page=Despacho.Manifiesto_003.Home_010&manifiesto_codigo=",
                 "DeleteCacheMin": f"{url_base}page=Despacho.Manifiesto_003.BorrarCacheMinisterio#no-back-button"
             }
         },

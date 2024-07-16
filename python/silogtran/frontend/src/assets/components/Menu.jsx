@@ -1,30 +1,54 @@
 import React, { useState } from 'react';
 import '../styles/Container.css';
 import Shipment from './Shipment';
+import Manifiest from './Manifiest';
 
 const Menu = ({ showFormLogin }) => {
   const [isMenuVisible, setMenuVisible] = useState(true);
   const [isShipmentVisible, setShipmentVisible] = useState(false);
+  const [isManifiestVisible, setManifiestVisible] = useState(false);
+  const [isBoolValue, setBoolValue] = useState(false);
 
-  const showShipment = () => {
+  const showShipment = (bool) => {
+    if (bool) {
+      alert("Entraste por la opción C");
+      setMenuVisible(false);
+      setManifiestVisible(false);
+      setShipmentVisible(true);
+    } else {
+      alert("Entraste por la opción B");
+      setMenuVisible(false);
+      setManifiestVisible(false);
+      setShipmentVisible(true);
+    }
+    console.log("Bool: ", bool);
+    setBoolValue(bool);
+  };
+
+  const showManifiest = () => {
     setMenuVisible(false);
-    setShipmentVisible(true);
+    setShipmentVisible(false);
+    setManifiestVisible(true);
   };
 
   const showMenu2 = () => {
     setMenuVisible(true);
     setShipmentVisible(false);
+    setManifiestVisible(false);
   };
 
   const handleRedirect = (path) => {
     window.open(`http://127.0.0.1:5000/${path}`, '_blank');
   };
 
+  // Agregar console.log para mostrar isBoolValue
+  console.log("isBoolValue:", isBoolValue);
+
   return (
     <>
       {isMenuVisible && (
         <div id="menu" className="menu visible">
-          <div className='menu-content'>
+          <div className="menu-content">
             <div>
               <input 
                 type="button" 
@@ -40,7 +64,7 @@ const Menu = ({ showFormLogin }) => {
                 id="b" 
                 name="b" 
                 value="📑 Cambiar origen remesas"
-                onClick={showShipment}
+                onClick={() => showShipment(false)}
               />
             </div>
             <div>
@@ -49,6 +73,7 @@ const Menu = ({ showFormLogin }) => {
                 id="c" 
                 name="c" 
                 value="🗒️ Cambiar destinatario remesas"
+                onClick={() => showManifiest()}
               />
             </div>
             <div>
@@ -71,8 +96,8 @@ const Menu = ({ showFormLogin }) => {
           </div>
         </div>
       )}
-      
-      {isShipmentVisible && <Shipment showMenu2={showMenu2} />}
+      {isShipmentVisible && <Shipment showMenu2={showMenu2} value={isBoolValue} />}
+      {isManifiestVisible && <Manifiest showMenu2={showMenu2} showShipment={showShipment} />}
     </>
   );
 };

@@ -1,32 +1,38 @@
-import React from "react";
-import '../styles/Form.css';
+import {React,useState} from 'react';
+import '../styles/Container.css'
+import BackButton from './BackButton';
 
-const FormLogin = (props) => {
+const ComponentName = ({showMenu2, showShipment}) => {
+  const [codeManifiest, setCodeManifiest] = useState('');
 
-  const handleRedirect = () => {
-    window.open('http://127.0.0.1:5000/login', '_blank');
+  const handleRedirect = (e) => {
+    e.preventDefault(); // Detener el envío automático del formulario
+     // Llamar a showShipment
+    window.open(`http://127.0.0.1:5000/manifiest/0${parseInt(codeManifiest)}#ctl0_MainModule_Remesa`, '_blank');
+    showShipment(true)
   };
-
+  
   return (
-    <>
-      <form id="form-login" name="form-login" className="forms">
-        <div id="input-question" className="inputs">
-          <label>
-            <h2>¿Ya iniciaste sesión en SILOGTRAN?</h2>
-          </label>
-          <div id="btns-login">
-            <input type="button" value="SI"/>
+    <div  id="manifiest" className='manifiest visible'>
+        <h2>Manifiesto</h2>
+        <form onSubmit={handleRedirect} id='manifiest-content' className='manifiest-content'>
+          <BackButton showMenu2={showMenu2}/>
+          <div>
+            <label htmlFor="code-shipment">Código de manifiesto: </label>
             <input 
-              style={{ width: '100%' }} 
-              type="button" 
-              value="NO" 
-              onClick={handleRedirect} 
+              id="code-manifiest" 
+              name="code-manifiest" 
+              type="number" 
+              value={codeManifiest}
+              onChange={(e) => setCodeManifiest(e.target.value)}
             />
           </div>
-        </div>
-      </form>
-    </>
+          <input type="submit" value="OK" onClick={()=>{
+            handleRedirect
+            }}/>  
+        </form>
+      </div>
   );
 };
 
-export default FormLogin;
+export default ComponentName;
