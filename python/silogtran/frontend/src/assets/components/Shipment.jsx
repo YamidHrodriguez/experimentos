@@ -22,12 +22,12 @@ const Shipment = ({ showMenu2, value }) => {
             
             if (borrar_Cache === "SI") {
               window.open('http://127.0.0.1:5000/manifiest/delete_cache_min', '_blank');
-              clearInterval(intervalo); // Detener el intervalo cuando la respuesta es "SI"
+              clearInterval(interval); // Detener el interval cuando la respuesta es "SI"
             }
           };
   
-          // Intervalo para preguntar cada cierto tiempo (por ejemplo, cada 5 segundos)
-          let intervalo = setInterval(preguntarCache, 15000);
+          // interval para preguntar cada cierto tiempo (por ejemplo, cada 60 segundos)
+          let interval = setInterval(preguntarCache, 60000);
   
           // Llamar a la función una vez inicialmente
           preguntarCache();
@@ -44,7 +44,7 @@ const Shipment = ({ showMenu2, value }) => {
     <div id="shipment" className='shipment visible'>
       <h2>Remesas</h2>
       <form onSubmit={handleRedirect} id='shipment-content' className='shipment-content'>
-        <BackButton showMenu2={showMenu2}/>
+        <BackButton showMenu2={showMenu2} />
         <div>
           <label htmlFor="code-shipment">Código de remesa: </label>
           <input 

@@ -29,24 +29,26 @@ def redirect_shipment(cod):
     url = f'{url_base}{cod}'
     return redirect(url, code=302)
 
+@app.route('/change_sender_respondent', methods=['GET'])
+def redirect_change_sender_respondent():
+    url = urls["masters"]["sender"]["change"]
+    return redirect(url, code=302)
+
 @app.route('/manifiest/<cod>', methods=['GET'])
 def redirect_manifiest(cod):
     url_base = urls["ship"]["manifiest"]["search"]
     url = f'{url_base}{cod}'
     return redirect(url, code=302)
 
-
-@app.route('/change_sender_respondent', methods=['GET'])
-def redirect_change_sender_respondent():
-    url = urls["masters"]["sender"]["change"]
-    return redirect(url, code=302)
-
-
 @app.route('/manifiest/delete_cache_min', methods=['GET'])
 def redirect_deleteCacheMin():
     url = urls["ship"]["manifiest"]["DeleteCacheMin"]
     return redirect(url, code=302)
 
+@app.route('/shipment/deconsolidation_shipment')
+def deconsolidation_shipment():
+    url = urls["ship"]["shipment"]["procedure"]["deconsolidation"]
+    return redirect(url, code=302)
 
 
 if __name__ == '__main__':

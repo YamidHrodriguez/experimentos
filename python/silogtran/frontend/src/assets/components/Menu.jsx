@@ -11,12 +11,10 @@ const Menu = ({ showFormLogin }) => {
 
   const showShipment = (bool) => {
     if (bool) {
-      alert("Entraste por la opción C");
       setMenuVisible(false);
       setManifiestVisible(false);
       setShipmentVisible(true);
     } else {
-      alert("Entraste por la opción B");
       setMenuVisible(false);
       setManifiestVisible(false);
       setShipmentVisible(true);
@@ -82,6 +80,7 @@ const Menu = ({ showFormLogin }) => {
                 id="d" 
                 name="d" 
                 value="✨ Desconsolidar remesa"
+                onClick ={() => handleRedirect('shipment/deconsolidation_shipment')}
               />
             </div>
             <div>

@@ -1,0 +1,5 @@
+h1{
+    font-size: clamp( 3vw, 4vw, 5vw);
+    width: 100%;
+    text-align: center;
+}
