@@ -1,0 +1,56 @@
+#root, body, html{
+  background: #1a1a1a;
+}
+#root{
+  color: white;
+}
+h1{
+  width: 100%;
+  text-align: center;
+}
+.task-container {
+  color: black;
+  display: flex;
+  
+  justify-content: space-between;
+  padding: 20px;
+  background: #1a1a1a;
+}
+
+.task-list, .completed-tasks {
+  width: 45%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  background-color: #d6d6d6;
+  min-height: 200px; /* Añadido para asegurar espacio en el área de soltar */
+}
+
+.task {
+  padding: 10px;
+  margin: 5px;
+  border: 1px solid #ccc;
+  background-color: #004b89;
+  cursor: move;
+}
+
+.task:hover {
+  background-color: #003de6;
+}
+
+.completed-tasks {
+  background-color: #00ce18;
+}
+
+.completed-tasks h2 {
+  margin: 0;
+  padding: 10px;
+  background-color: #d1ffd1;
+}
+ul{
+  display: grid;
+  width: 100;
+  padding: 0 !important;  
+}
+ul li{
+  list-style: none;
+}

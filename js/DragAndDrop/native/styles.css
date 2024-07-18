@@ -1,0 +1,13 @@
+#drag1 {
+    width: 100px;
+    height: 100px;
+    background-color: red;
+    margin-bottom: 15px;
+    cursor: pointer;
+}
+.dropzone {
+    width: 200px;
+    height: 200px;
+    margin: 10px;
+    border: 2px dashed #000;
+}
